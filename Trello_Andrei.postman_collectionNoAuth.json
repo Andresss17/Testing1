@@ -1,0 +1,2193 @@
+{
+	"info": {
+		"_postman_id": "492a9733-fd0f-4058-b43f-fe322fed29c6",
+		"name": "Trello_Andrei",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16111809"
+	},
+	"item": [
+		{
+			"name": "Members",
+			"item": [
+				{
+					"name": "Get Boards That Member Belongs To",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].limits.attachments.perBoard.status).to.eql(\"ok\");\r",
+									"});\r",
+									"\r",
+									"var expectedSchema = {\r",
+									"    \"type\": \"array\",\r",
+									"    \"items\": {\r",
+									"        \"type\": \"object\",\r",
+									"        \"required\": [\r",
+									"            \"id\",\r",
+									"            \"limits\"\r",
+									"        ],\r",
+									"        \"properties\": {\r",
+									"            \"id\": {\r",
+									"                \"type\": \"string\"\r",
+									"            },\r",
+									"            \"limits\": {\r",
+									"                \"type\": \"object\",\r",
+									"                \"required\": [\r",
+									"                    \"attachments\",\r",
+									"                    \"boards\",\r",
+									"                    \"cards\",\r",
+									"                    \"checklists\",\r",
+									"                    \"checkItems\",\r",
+									"                    \"customFields\",\r",
+									"                    \"customFieldOptions\",\r",
+									"                    \"labels\",\r",
+									"                    \"lists\",\r",
+									"                    \"stickers\",\r",
+									"                    \"reactions\"\r",
+									"                ],\r",
+									"                \"properties\": {\r",
+									"                    \"attachments\": {\r",
+									"                        \"type\": \"object\",\r",
+									"                        \"required\": [\r",
+									"                            \"perBoard\",\r",
+									"                            \"perCard\"\r",
+									"                        ],\r",
+									"                        \"properties\": {\r",
+									"                            \"perBoard\": {\r",
+									"                                \"type\": \"object\",\r",
+									"                                \"required\": [\r",
+									"                                    \"status\",\r",
+									"                                    \"disableAt\",\r",
+									"                                    \"warnAt\"\r",
+									"                                ],\r",
+									"                                \"properties\": {\r",
+									"                                    \"status\": {\r",
+									"                                        \"type\": \"string\"\r",
+									"                                    },\r",
+									"                                    \"disableAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    },\r",
+									"                                    \"warnAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    }\r",
+									"                                }\r",
+									"                            },\r",
+									"                            \"perCard\": {\r",
+									"                                \"type\": \"object\",\r",
+									"                                \"required\": [\r",
+									"                                    \"status\",\r",
+									"                                    \"disableAt\",\r",
+									"                                    \"warnAt\"\r",
+									"                                ],\r",
+									"                                \"properties\": {\r",
+									"                                    \"status\": {\r",
+									"                                        \"type\": \"string\"\r",
+									"                                    },\r",
+									"                                    \"disableAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    },\r",
+									"                                    \"warnAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    }\r",
+									"                                }\r",
+									"                            }\r",
+									"                        }\r",
+									"                    },\r",
+									"                    \"boards\": {\r",
+									"                        \"type\": \"object\",\r",
+									"                        \"required\": [\r",
+									"                            \"totalMembersPerBoard\",\r",
+									"                            \"totalAccessRequestsPerBoard\"\r",
+									"                        ],\r",
+									"                        \"properties\": {\r",
+									"                            \"totalMembersPerBoard\": {\r",
+									"                                \"type\": \"object\",\r",
+									"                                \"required\": [\r",
+									"                                    \"status\",\r",
+									"                                    \"disableAt\",\r",
+									"                                    \"warnAt\"\r",
+									"                                ],\r",
+									"                                \"properties\": {\r",
+									"                                    \"status\": {\r",
+									"                                        \"type\": \"string\"\r",
+									"                                    },\r",
+									"                                    \"disableAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    },\r",
+									"                                    \"warnAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    }\r",
+									"                                }\r",
+									"                            },\r",
+									"                            \"totalAccessRequestsPerBoard\": {\r",
+									"                                \"type\": \"object\",\r",
+									"                                \"required\": [\r",
+									"                                    \"status\",\r",
+									"                                    \"disableAt\",\r",
+									"                                    \"warnAt\"\r",
+									"                                ],\r",
+									"                                \"properties\": {\r",
+									"                                    \"status\": {\r",
+									"                                        \"type\": \"string\"\r",
+									"                                    },\r",
+									"                                    \"disableAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    },\r",
+									"                                    \"warnAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    }\r",
+									"                                }\r",
+									"                            }\r",
+									"                        }\r",
+									"                    },\r",
+									"                    \"cards\": {\r",
+									"                        \"type\": \"object\",\r",
+									"                        \"required\": [\r",
+									"                            \"openPerBoard\",\r",
+									"                            \"openPerList\",\r",
+									"                            \"totalPerBoard\",\r",
+									"                            \"totalPerList\"\r",
+									"                        ],\r",
+									"                        \"properties\": {\r",
+									"                            \"openPerBoard\": {\r",
+									"                                \"type\": \"object\",\r",
+									"                                \"required\": [\r",
+									"                                    \"status\",\r",
+									"                                    \"disableAt\",\r",
+									"                                    \"warnAt\"\r",
+									"                                ],\r",
+									"                                \"properties\": {\r",
+									"                                    \"status\": {\r",
+									"                                        \"type\": \"string\"\r",
+									"                                    },\r",
+									"                                    \"disableAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    },\r",
+									"                                    \"warnAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    }\r",
+									"                                }\r",
+									"                            },\r",
+									"                            \"openPerList\": {\r",
+									"                                \"type\": \"object\",\r",
+									"                                \"required\": [\r",
+									"                                    \"status\",\r",
+									"                                    \"disableAt\",\r",
+									"                                    \"warnAt\"\r",
+									"                                ],\r",
+									"                                \"properties\": {\r",
+									"                                    \"status\": {\r",
+									"                                        \"type\": \"string\"\r",
+									"                                    },\r",
+									"                                    \"disableAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    },\r",
+									"                                    \"warnAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    }\r",
+									"                                }\r",
+									"                            },\r",
+									"                            \"totalPerBoard\": {\r",
+									"                                \"type\": \"object\",\r",
+									"                                \"required\": [\r",
+									"                                    \"status\",\r",
+									"                                    \"disableAt\",\r",
+									"                                    \"warnAt\"\r",
+									"                                ],\r",
+									"                                \"properties\": {\r",
+									"                                    \"status\": {\r",
+									"                                        \"type\": \"string\"\r",
+									"                                    },\r",
+									"                                    \"disableAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    },\r",
+									"                                    \"warnAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    }\r",
+									"                                }\r",
+									"                            },\r",
+									"                            \"totalPerList\": {\r",
+									"                                \"type\": \"object\",\r",
+									"                                \"required\": [\r",
+									"                                    \"status\",\r",
+									"                                    \"disableAt\",\r",
+									"                                    \"warnAt\"\r",
+									"                                ],\r",
+									"                                \"properties\": {\r",
+									"                                    \"status\": {\r",
+									"                                        \"type\": \"string\"\r",
+									"                                    },\r",
+									"                                    \"disableAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    },\r",
+									"                                    \"warnAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    }\r",
+									"                                }\r",
+									"                            }\r",
+									"                        }\r",
+									"                    },\r",
+									"                    \"checklists\": {\r",
+									"                        \"type\": \"object\",\r",
+									"                        \"required\": [\r",
+									"                            \"perBoard\",\r",
+									"                            \"perCard\"\r",
+									"                        ],\r",
+									"                        \"properties\": {\r",
+									"                            \"perBoard\": {\r",
+									"                                \"type\": \"object\",\r",
+									"                                \"required\": [\r",
+									"                                    \"status\",\r",
+									"                                    \"disableAt\",\r",
+									"                                    \"warnAt\"\r",
+									"                                ],\r",
+									"                                \"properties\": {\r",
+									"                                    \"status\": {\r",
+									"                                        \"type\": \"string\"\r",
+									"                                    },\r",
+									"                                    \"disableAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    },\r",
+									"                                    \"warnAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    }\r",
+									"                                }\r",
+									"                            },\r",
+									"                            \"perCard\": {\r",
+									"                                \"type\": \"object\",\r",
+									"                                \"required\": [\r",
+									"                                    \"status\",\r",
+									"                                    \"disableAt\",\r",
+									"                                    \"warnAt\"\r",
+									"                                ],\r",
+									"                                \"properties\": {\r",
+									"                                    \"status\": {\r",
+									"                                        \"type\": \"string\"\r",
+									"                                    },\r",
+									"                                    \"disableAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    },\r",
+									"                                    \"warnAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    }\r",
+									"                                }\r",
+									"                            }\r",
+									"                        }\r",
+									"                    },\r",
+									"                    \"checkItems\": {\r",
+									"                        \"type\": \"object\",\r",
+									"                        \"required\": [\r",
+									"                            \"perChecklist\"\r",
+									"                        ],\r",
+									"                        \"properties\": {\r",
+									"                            \"perChecklist\": {\r",
+									"                                \"type\": \"object\",\r",
+									"                                \"required\": [\r",
+									"                                    \"status\",\r",
+									"                                    \"disableAt\",\r",
+									"                                    \"warnAt\"\r",
+									"                                ],\r",
+									"                                \"properties\": {\r",
+									"                                    \"status\": {\r",
+									"                                        \"type\": \"string\"\r",
+									"                                    },\r",
+									"                                    \"disableAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    },\r",
+									"                                    \"warnAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    }\r",
+									"                                }\r",
+									"                            }\r",
+									"                        }\r",
+									"                    },\r",
+									"                    \"customFields\": {\r",
+									"                        \"type\": \"object\",\r",
+									"                        \"required\": [\r",
+									"                            \"perBoard\"\r",
+									"                        ],\r",
+									"                        \"properties\": {\r",
+									"                            \"perBoard\": {\r",
+									"                                \"type\": \"object\",\r",
+									"                                \"required\": [\r",
+									"                                    \"status\",\r",
+									"                                    \"disableAt\",\r",
+									"                                    \"warnAt\"\r",
+									"                                ],\r",
+									"                                \"properties\": {\r",
+									"                                    \"status\": {\r",
+									"                                        \"type\": \"string\"\r",
+									"                                    },\r",
+									"                                    \"disableAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    },\r",
+									"                                    \"warnAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    }\r",
+									"                                }\r",
+									"                            }\r",
+									"                        }\r",
+									"                    },\r",
+									"                    \"customFieldOptions\": {\r",
+									"                        \"type\": \"object\",\r",
+									"                        \"required\": [\r",
+									"                            \"perField\"\r",
+									"                        ],\r",
+									"                        \"properties\": {\r",
+									"                            \"perField\": {\r",
+									"                                \"type\": \"object\",\r",
+									"                                \"required\": [\r",
+									"                                    \"status\",\r",
+									"                                    \"disableAt\",\r",
+									"                                    \"warnAt\"\r",
+									"                                ],\r",
+									"                                \"properties\": {\r",
+									"                                    \"status\": {\r",
+									"                                        \"type\": \"string\"\r",
+									"                                    },\r",
+									"                                    \"disableAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    },\r",
+									"                                    \"warnAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    }\r",
+									"                                }\r",
+									"                            }\r",
+									"                        }\r",
+									"                    },\r",
+									"                    \"labels\": {\r",
+									"                        \"type\": \"object\",\r",
+									"                        \"required\": [\r",
+									"                            \"perBoard\"\r",
+									"                        ],\r",
+									"                        \"properties\": {\r",
+									"                            \"perBoard\": {\r",
+									"                                \"type\": \"object\",\r",
+									"                                \"required\": [\r",
+									"                                    \"status\",\r",
+									"                                    \"disableAt\",\r",
+									"                                    \"warnAt\"\r",
+									"                                ],\r",
+									"                                \"properties\": {\r",
+									"                                    \"status\": {\r",
+									"                                        \"type\": \"string\"\r",
+									"                                    },\r",
+									"                                    \"disableAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    },\r",
+									"                                    \"warnAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    }\r",
+									"                                }\r",
+									"                            }\r",
+									"                        }\r",
+									"                    },\r",
+									"                    \"lists\": {\r",
+									"                        \"type\": \"object\",\r",
+									"                        \"required\": [\r",
+									"                            \"openPerBoard\",\r",
+									"                            \"totalPerBoard\"\r",
+									"                        ],\r",
+									"                        \"properties\": {\r",
+									"                            \"openPerBoard\": {\r",
+									"                                \"type\": \"object\",\r",
+									"                                \"required\": [\r",
+									"                                    \"status\",\r",
+									"                                    \"disableAt\",\r",
+									"                                    \"warnAt\"\r",
+									"                                ],\r",
+									"                                \"properties\": {\r",
+									"                                    \"status\": {\r",
+									"                                        \"type\": \"string\"\r",
+									"                                    },\r",
+									"                                    \"disableAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    },\r",
+									"                                    \"warnAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    }\r",
+									"                                }\r",
+									"                            },\r",
+									"                            \"totalPerBoard\": {\r",
+									"                                \"type\": \"object\",\r",
+									"                                \"required\": [\r",
+									"                                    \"status\",\r",
+									"                                    \"disableAt\",\r",
+									"                                    \"warnAt\"\r",
+									"                                ],\r",
+									"                                \"properties\": {\r",
+									"                                    \"status\": {\r",
+									"                                        \"type\": \"string\"\r",
+									"                                    },\r",
+									"                                    \"disableAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    },\r",
+									"                                    \"warnAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    }\r",
+									"                                }\r",
+									"                            }\r",
+									"                        }\r",
+									"                    },\r",
+									"                    \"stickers\": {\r",
+									"                        \"type\": \"object\",\r",
+									"                        \"required\": [\r",
+									"                            \"perCard\"\r",
+									"                        ],\r",
+									"                        \"properties\": {\r",
+									"                            \"perCard\": {\r",
+									"                                \"type\": \"object\",\r",
+									"                                \"required\": [\r",
+									"                                    \"status\",\r",
+									"                                    \"disableAt\",\r",
+									"                                    \"warnAt\"\r",
+									"                                ],\r",
+									"                                \"properties\": {\r",
+									"                                    \"status\": {\r",
+									"                                        \"type\": \"string\"\r",
+									"                                    },\r",
+									"                                    \"disableAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    },\r",
+									"                                    \"warnAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    }\r",
+									"                                }\r",
+									"                            }\r",
+									"                        }\r",
+									"                    },\r",
+									"                    \"reactions\": {\r",
+									"                        \"type\": \"object\",\r",
+									"                        \"required\": [\r",
+									"                            \"perAction\",\r",
+									"                            \"uniquePerAction\"\r",
+									"                        ],\r",
+									"                        \"properties\": {\r",
+									"                            \"perAction\": {\r",
+									"                                \"type\": \"object\",\r",
+									"                                \"required\": [\r",
+									"                                    \"status\",\r",
+									"                                    \"disableAt\",\r",
+									"                                    \"warnAt\"\r",
+									"                                ],\r",
+									"                                \"properties\": {\r",
+									"                                    \"status\": {\r",
+									"                                        \"type\": \"string\"\r",
+									"                                    },\r",
+									"                                    \"disableAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    },\r",
+									"                                    \"warnAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    }\r",
+									"                                }\r",
+									"                            },\r",
+									"                            \"uniquePerAction\": {\r",
+									"                                \"type\": \"object\",\r",
+									"                                \"required\": [\r",
+									"                                    \"status\",\r",
+									"                                    \"disableAt\",\r",
+									"                                    \"warnAt\"\r",
+									"                                ],\r",
+									"                                \"properties\": {\r",
+									"                                    \"status\": {\r",
+									"                                        \"type\": \"string\"\r",
+									"                                    },\r",
+									"                                    \"disableAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    },\r",
+									"                                    \"warnAt\": {\r",
+									"                                        \"type\": \"integer\"\r",
+									"                                    }\r",
+									"                                }\r",
+									"                            }\r",
+									"                        }\r",
+									"                    }\r",
+									"                }\r",
+									"            }\r",
+									"        }\r",
+									"    }\r",
+									"};\r",
+									"\r",
+									"pm.test('Schema is valid', function(){\r",
+									"    pm.response.to.have.jsonSchema(expectedSchema)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/members/{{Username}}/boards?key={{Api-key}}&token={{Token}}&fields=id, name, desc, descData, closed, idMemberCreator, idOrganization, pinned, url, shortUrl,limits",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"members",
+								"{{Username}}",
+								"boards"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								},
+								{
+									"key": "fields",
+									"value": "id, name, desc, descData, closed, idMemberCreator, idOrganization, pinned, url, shortUrl,limits"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Member",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate category fullName equals Andre Vokuev\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.fullName).to.eql(\"Andre Vokuev\");\r",
+									"});\r",
+									"\r",
+									"var expectedSchema = {\r",
+									"\r",
+									"    \"type\": \"object\",\r",
+									"    \"required\": [\r",
+									"        \"id\",\r",
+									"        \"aaId\",\r",
+									"        \"activityBlocked\",\r",
+									"        \"avatarHash\",\r",
+									"        \"avatarUrl\",\r",
+									"        \"bio\",\r",
+									"        \"bioData\",\r",
+									"        \"fullName\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"id\": {\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \"aaId\": {\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \"activityBlocked\": {\r",
+									"            \"type\": \"boolean\"\r",
+									"        },\r",
+									"        \"avatarHash\": {\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \"avatarUrl\": {\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \"bio\": {\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \"bioData\": {\r",
+									"            \"type\": \"null\"\r",
+									"        },\r",
+									"        \"fullName\": {\r",
+									"            \"type\": \"string\"\r",
+									"        }\r",
+									"    }\r",
+									"};\r",
+									"\r",
+									"pm.test('Schema is valid', function(){\r",
+									"    pm.response.to.have.jsonSchema(expectedSchema)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/members/{{Username}}?key={{Api-key}}&token={{Token}}&fields=id,aaId,activityBlocked,avatarHash,avatarUrl,bio,bioData,fullName",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"members",
+								"{{Username}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								},
+								{
+									"key": "fields",
+									"value": "id,aaId,activityBlocked,avatarHash,avatarUrl,bio,bioData,fullName"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Member",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate Catigary activityBlocked equals false\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.activityBlocked).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains Andre Vokuev\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Andre Vokuev\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/members/{{Username}}?key={{Api-key}}&token={{Token}}&fields=id,aaId,activityBlocked,avatarHash,avatarUrl,bio,bioData,fullName",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"members",
+								"{{Username}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								},
+								{
+									"key": "fields",
+									"value": "id,aaId,activityBlocked,avatarHash,avatarUrl,bio,bioData,fullName"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Boards",
+			"item": [
+				{
+					"name": "Create a board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//var responseBody = pm.response.json();\r",
+									"\r",
+									"//pm.environment.set(\"Board_id\", responseBody.id);\r",
+									"\r",
+									"pm.environment.set(\"Board_id\", pm.response.json().id);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains idEnterprise\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"idEnterprise\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.prefs.comments).to.eql(\"members\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/boards/?name=Trello_board_1&key={{Api-key}}&token={{Token}}",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Trello_board_1"
+								},
+								{
+									"key": "key",
+									"value": "{{Api-key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var expectedSchema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"required\": [\r",
+									"        \"id\",\r",
+									"        \"name\",\r",
+									"        \"closed\",\r",
+									"        \"shortUrl\",\r",
+									"        \"idOrganization\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"id\": {\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \"name\": {\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \"closed\": {\r",
+									"            \"type\": \"boolean\"\r",
+									"        },\r",
+									"        \"idOrganization\": {\r",
+									"            \"type\": \"string\"\r",
+									"        }\r",
+									"    }\r",
+									"};\r",
+									"\r",
+									"pm.test('Schema is valid', function () {\r",
+									"    pm.response.to.have.jsonSchema(expectedSchema)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains idOrganization\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"idOrganization\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/boards/{{Board_id}}?key={{Api-key}}&token={{Token}}&fields=id,name,closed,idOrganization,shortUrl",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								"{{Board_id}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								},
+								{
+									"key": "fields",
+									"value": "id,name,closed,idOrganization,shortUrl"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.descData).to.eql(null);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains voting\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"voting\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/boards/{{Board_id}}?key={{Api-key}}&token={{Token}}&closed=true",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								"{{Board_id}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								},
+								{
+									"key": "closed",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains _value\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"value\");\r",
+									"});\r",
+									"\r",
+									"var expectedSchema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"required\": [\r",
+									"        \"_value\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"_value\": {\r",
+									"            \"type\": \"null\"\r",
+									"        }\r",
+									"    }\r",
+									"};\r",
+									"\r",
+									"pm.test('Schema is valid', function () {\r",
+									"    pm.response.to.have.jsonSchema(expectedSchema)\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/boards/{{Board_id}}?key={{Api-key}}&token={{Token}}",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								"{{Board_id}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Endpoint security",
+			"item": [
+				{
+					"name": "Create a board Copy(no key)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//var responseBody = pm.response.json();\r",
+									"\r",
+									"//pm.environment.set(\"Board_id\", responseBody.id);\r",
+									"\r",
+									"// pm.environment.set(\"Board_id\", pm.response.json().id);\r",
+									"\r",
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"invalid key\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"invalid key\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/boards/?name=Trello_board_1&token={{Token}}",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Trello_board_1"
+								},
+								{
+									"key": "key",
+									"value": "{{Api-key}}",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a board (no token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//var responseBody = pm.response.json();\r",
+									"\r",
+									"//pm.environment.set(\"Board_id\", responseBody.id);\r",
+									"\r",
+									"//pm.environment.set(\"Board_id\", pm.response.json().id);\r",
+									"\r",
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains unauthorized permission requested\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"unauthorized permission requested\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/boards/?name=Trello_board_1&key={{Api-key}}",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Trello_board_1"
+								},
+								{
+									"key": "key",
+									"value": "{{Api-key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a board (no key, no token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//var responseBody = pm.response.json();\r",
+									"\r",
+									"//pm.environment.set(\"Board_id\", responseBody.id);\r",
+									"\r",
+									"//pm.environment.set(\"Board_id\", pm.response.json().id);\r",
+									"\r",
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains invalid key\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"invalid key\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/boards/?name=Trello_board_1",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Trello_board_1"
+								},
+								{
+									"key": "key",
+									"value": "{{Api-key}}",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a board (no key)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains invalid key\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"invalid key\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/boards/{{Board_id}}?token={{Token}}&fields=id,name,closed,idOrganization,shortUrl",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								"{{Board_id}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								},
+								{
+									"key": "fields",
+									"value": "id,name,closed,idOrganization,shortUrl"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a board (no token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains unauthorized permission requested\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"unauthorized permission requested\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/boards/{{Board_id}}?key={{Api-key}}&fields=id,name,closed,idOrganization,shortUrl",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								"{{Board_id}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"disabled": true
+								},
+								{
+									"key": "fields",
+									"value": "id,name,closed,idOrganization,shortUrl"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a board (no key, no token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains unauthorized permission requested\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"unauthorized permission requested\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/boards/{{Board_id}}?fields=id,name,closed,idOrganization,shortUrl",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								"{{Board_id}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"disabled": true
+								},
+								{
+									"key": "fields",
+									"value": "id,name,closed,idOrganization,shortUrl"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a board Copy (no key)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains invalid key\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"invalid key\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/boards/{{Board_id}}?token={{Token}}&closed=true",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								"{{Board_id}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								},
+								{
+									"key": "closed",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a board (no token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains unauthorized permission requested\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"unauthorized permission requested\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/boards/{{Board_id}}?key={{Api-key}}&closed=true",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								"{{Board_id}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"disabled": true
+								},
+								{
+									"key": "closed",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a board (no key no token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains invalid key\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"invalid key\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/boards/{{Board_id}}?closed=true",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								"{{Board_id}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"disabled": true
+								},
+								{
+									"key": "closed",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a board (no key)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains invalid key\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"invalid key\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/boards/{{Board_id}}?token={{Token}}",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								"{{Board_id}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a board (no token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains unauthorized permission requested\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"unauthorized permission requested\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/boards/{{Board_id}}?key={{Api-key}}",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								"{{Board_id}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a board (no key no token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains invalid key\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"invalid key\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/boards/{{Board_id}}",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								"{{Board_id}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Boards That Member Belongs (no key)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains invalid key\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"invalid key\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/members/{{Username}}/boards?token={{Token}}&fields=id, name, desc, descData, closed, idMemberCreator, idOrganization, pinned, url, shortUrl,limits",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"members",
+								"{{Username}}",
+								"boards"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								},
+								{
+									"key": "fields",
+									"value": "id, name, desc, descData, closed, idMemberCreator, idOrganization, pinned, url, shortUrl,limits"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Boards That Member Belongs(no token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"var expectedSchema = {\r",
+									"  \"type\": \"array\",\r",
+									"  \"maxItems\": 0,\r",
+									"  \"minItems\": 0,\r",
+									"  \"items\": {}\r",
+									"};\r",
+									"\r",
+									"pm.test('Schema is valid', function(){\r",
+									"    pm.response.to.have.jsonSchema(expectedSchema)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/members/{{Username}}/boards?key={{Api-key}}&fields=id, name, desc, descData, closed, idMemberCreator, idOrganization, pinned, url, shortUrl,limits",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"members",
+								"{{Username}}",
+								"boards"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"disabled": true
+								},
+								{
+									"key": "fields",
+									"value": "id, name, desc, descData, closed, idMemberCreator, idOrganization, pinned, url, shortUrl,limits"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Boards That Member Belongs(no key, no token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"var expectedSchema = {\r",
+									"  \"type\": \"array\",\r",
+									"  \"maxItems\": 0,\r",
+									"  \"items\": {}\r",
+									"};\r",
+									"\r",
+									"pm.test('Schema is valid', function () {\r",
+									"    pm.response.to.have.jsonSchema(expectedSchema)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/members/{{Username}}/boards?fields=id, name, desc, descData, closed, idMemberCreator, idOrganization, pinned, url, shortUrl,limits",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"members",
+								"{{Username}}",
+								"boards"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"disabled": true
+								},
+								{
+									"key": "fields",
+									"value": "id, name, desc, descData, closed, idMemberCreator, idOrganization, pinned, url, shortUrl,limits"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Member Copy (no key)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains invalid key\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"invalid key\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/members/{{Username}}?token={{Token}}&fields=id,aaId,activityBlocked,avatarHash,avatarUrl,bio,bioData,fullName",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"members",
+								"{{Username}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								},
+								{
+									"key": "fields",
+									"value": "id,aaId,activityBlocked,avatarHash,avatarUrl,bio,bioData,fullName"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Member Copy (no token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate category fullName equals Andre Vokuev\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.fullName).to.eql(\"Andre Vokuev\");\r",
+									"});\r",
+									"\r",
+									"var expectedSchema = {\r",
+									"\r",
+									"    \"type\": \"object\",\r",
+									"    \"required\": [\r",
+									"        \"id\",\r",
+									"        \"aaId\",\r",
+									"        \"activityBlocked\",\r",
+									"        \"avatarHash\",\r",
+									"        \"avatarUrl\",\r",
+									"        \"bio\",\r",
+									"        \"bioData\",\r",
+									"        \"fullName\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"id\": {\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \"aaId\": {\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \"activityBlocked\": {\r",
+									"            \"type\": \"boolean\"\r",
+									"        },\r",
+									"        \"avatarHash\": {\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \"avatarUrl\": {\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \"bio\": {\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \"bioData\": {\r",
+									"            \"type\": \"null\"\r",
+									"        },\r",
+									"        \"fullName\": {\r",
+									"            \"type\": \"string\"\r",
+									"        }\r",
+									"    }\r",
+									"};\r",
+									"\r",
+									"pm.test('Schema is valid', function(){\r",
+									"    pm.response.to.have.jsonSchema(expectedSchema)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/members/{{Username}}?key={{Api-key}}&fields=id,aaId,activityBlocked,avatarHash,avatarUrl,bio,bioData,fullName",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"members",
+								"{{Username}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"disabled": true
+								},
+								{
+									"key": "fields",
+									"value": "id,aaId,activityBlocked,avatarHash,avatarUrl,bio,bioData,fullName"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Member Copy (no key, no token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains invalid key\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"invalid key\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Validate category fullName equals Andre Vokuev\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.fullName).to.eql(\"Andre Vokuev\");\r",
+									"});\r",
+									"\r",
+									"var expectedSchema = {\r",
+									"\r",
+									"    \"type\": \"object\",\r",
+									"    \"required\": [\r",
+									"        \"id\",\r",
+									"        \"aaId\",\r",
+									"        \"activityBlocked\",\r",
+									"        \"avatarHash\",\r",
+									"        \"avatarUrl\",\r",
+									"        \"bio\",\r",
+									"        \"bioData\",\r",
+									"        \"fullName\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"id\": {\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \"aaId\": {\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \"activityBlocked\": {\r",
+									"            \"type\": \"boolean\"\r",
+									"        },\r",
+									"        \"avatarHash\": {\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \"avatarUrl\": {\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \"bio\": {\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \"bioData\": {\r",
+									"            \"type\": \"null\"\r",
+									"        },\r",
+									"        \"fullName\": {\r",
+									"            \"type\": \"string\"\r",
+									"        }\r",
+									"    }\r",
+									"};\r",
+									"\r",
+									"pm.test('Schema is valid', function(){\r",
+									"    pm.response.to.have.jsonSchema(expectedSchema)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/members/{{Username}}",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"members",
+								"{{Username}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"disabled": true
+								},
+								{
+									"key": "fields",
+									"value": "id,aaId,activityBlocked,avatarHash,avatarUrl,bio,bioData,fullName",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Member (no key)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains invalid key\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"invalid key\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/members/{{Username}}?token={{Token}}&fields=id,aaId,activityBlocked,avatarHash,avatarUrl,bio,bioData,fullName",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"members",
+								"{{Username}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								},
+								{
+									"key": "fields",
+									"value": "id,aaId,activityBlocked,avatarHash,avatarUrl,bio,bioData,fullName"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Member (no token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate Catigary activityBlocked equals false\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.activityBlocked).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains Andre Vokuev\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Andre Vokuev\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/members/{{Username}}?key={{Api-key}}&fields=id,aaId,activityBlocked,avatarHash,avatarUrl,bio,bioData,fullName",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"members",
+								"{{Username}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"disabled": true
+								},
+								{
+									"key": "fields",
+									"value": "id,aaId,activityBlocked,avatarHash,avatarUrl,bio,bioData,fullName"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Member (no key no token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains invalid key\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"invalid key\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/1/members/{{Username}}?fields=id,aaId,activityBlocked,avatarHash,avatarUrl,bio,bioData,fullName",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"1",
+								"members",
+								"{{Username}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Api-key}}",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"disabled": true
+								},
+								{
+									"key": "fields",
+									"value": "id,aaId,activityBlocked,avatarHash,avatarUrl,bio,bioData,fullName"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
