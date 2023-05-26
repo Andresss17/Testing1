@@ -33,6 +33,7 @@ jobs:
         run: 'newman run Trello_Andrei.postman_collectionNoAuth.json -e Trello_UAT.postman_environment.json --reporters cli,junit --reporters-junit-export test_results/report.xml'
     
       - name: Output the results
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: my-artifact
