@@ -30,7 +30,7 @@ jobs:
          npm install -g newman-reporter-htmlextra
          
       - name: Run Postman Collection
-        run: 'newman run Trello_Andrei.postman_collectionNoAuth.json -e Trello_UAT.postman_environment.json --reporters cli,junit --reporters-junit-export test_results/report.xml'
+        run: 'newman run Trello_Andrei.postman_collectionNoAuth.json -e Trello_UAT.postman_environment.json --reporters cli,junit --reporter-junit-export test_results/report.xml'
     
       - name: Output the results
         if: always()
